@@ -1,261 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="author" content="HAMOY, KURT TOBEY">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Beats - Kurt Tobey Hamoy</title>
+<meta charset="UTF-8">
+<meta name="author" content="HAMOY, KURT TOBEY">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Beats - Kurt Tobey Hamoy</title>
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: Tahoma, Arial, sans-serif; background-color:#e6f2ff; color:#1b263b; padding:20px; }
-    .container { max-width:1200px; margin:0 auto; padding:40px 20px; }
-    .nav-btn { background-color:#005f73; color:white; padding:12px 30px; text-decoration:none; border-radius:5px; display:inline-block; margin:10px; font-family:Tahoma, Arial; text-align:center; transition:all 0.3s ease; }
-    .nav-btn:hover { background-color:#007a8a; transform:translateY(-2px); }
-    .btn-white { background-color:white; color:#005f73; border:2px solid #005f73; }
-    .btn-white:hover { background-color:#f0f0f0; }
-    .top-nav { text-align:center; margin-bottom:30px; }
-    .bottom-nav { text-align:center; margin-top:50px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
-    h1 { text-align:center; font-family:Georgia, serif; letter-spacing:2px; color:#0a9396; text-transform:uppercase; font-size:42px; margin-bottom:15px; }
-    .subtitle { text-align:center; font-size:16px; color:#415a77; margin-bottom:50px; }
-    .genre-section { margin:60px 0; }
-    .genre-title { font-family:Georgia, serif; color:#0a9396; font-size:32px; text-align:center; margin-bottom:10px; }
-    .genre-description { text-align:center; color:#415a77; font-size:14px; margin-bottom:30px; font-style:italic; }
-    .songs-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px; padding:0 10px; }
-    .song-card { background-color:white; border-radius:15px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:all 0.3s ease; }
-    .song-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(10,147,150,0.3); }
-    .album-image-link { display:block; width:100%; margin-bottom:15px; cursor:pointer; }
-    .album-image { width:100%; height:280px; object-fit:contain; background-color:#f5f5f5; border-radius:10px; transition:all 0.3s ease; }
-    .album-image-link:hover .album-image { transform:scale(1.05); box-shadow:0 4px 16px rgba(10,147,150,0.4); }
-    .song-title { font-size:18px; font-weight:bold; color:#1b263b; margin-bottom:8px; }
-    .artist-name { font-size:15px; color:#0a9396; margin-bottom:12px; font-weight:600; }
-    .song-info { font-size:13px; color:#415a77; line-height:1.6; }
-    .song-info strong { color:#1b263b; }
-    footer { text-align:center; margin-top:60px; font-size:10pt; color:#415a77; }
-    .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:999; padding:20px; }
-    .overlay:target { display:flex; }
-    .overlay img { max-width:90%; max-height:90%; border-radius:15px; box-shadow:0 0 30px rgba(0,0,0,0.5); }
-    .close-btn { position:absolute; top:30px; right:40px; color:white; font-size:40px; text-decoration:none; font-family:Arial, sans-serif; transition:color 0.3s; }
-    .close-btn:hover { color:#0a9396; }
-    @media screen and (max-width:768px) {
-      .container { padding:20px 15px; }
-      h1 { font-size:32px; letter-spacing:1px; }
-      .genre-title { font-size:26px; }
-      .songs-grid { grid-template-columns:1fr; gap:20px; }
-      .nav-btn { padding:10px 20px; font-size:12px; }
-      .album-image { height:240px; }
-    }
-    @media screen and (max-width:480px) {
-      body { padding:10px; }
-      .container { padding:15px 10px; }
-      h1 { font-size:26px; }
-      .genre-title { font-size:22px; }
-      .subtitle { font-size:14px; }
-      .nav-btn { width:100%; margin:5px 0; }
-      .bottom-nav { flex-direction:column; align-items:center; }
-      .album-image { height:200px; }
-      .song-card { padding:15px; }
-    }
-  </style>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #e6f2ff;
+    color: #1b263b;
+    padding: 20px;
+}
+.container { max-width:1200px; margin:0 auto; padding:40px 20px; }
+.nav-btn {
+    background-color:#005f73; color:white; padding:12px 30px; text-decoration:none;
+    border-radius:5px; display:inline-block; margin:10px; font-family:Tahoma, Arial;
+    text-align:center; transition:all 0.3s ease;
+}
+.nav-btn:hover { background-color:#007a8a; transform:translateY(-2px); }
+.btn-white { background-color:white; color:#005f73; border:2px solid #005f73; }
+.btn-white:hover { background-color:#f0f0f0; }
+.top-nav { text-align:center; margin-bottom:30px; }
+.bottom-nav { text-align:center; margin-top:50px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
+h1 { text-align:center; font-family:Georgia, serif; letter-spacing:2px; color:#0a9396; text-transform:uppercase; font-size:42px; margin-bottom:15px; }
+.subtitle { text-align:center; font-size:16px; color:#415a77; margin-bottom:50px; }
+.genre-section { margin:60px 0; }
+.genre-title { font-family:Georgia, serif; color:#0a9396; font-size:32px; text-align:center; margin-bottom:10px; }
+.genre-description { text-align:center; color:#415a77; font-size:14px; margin-bottom:30px; font-style:italic; }
+.songs-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:0 10px; }
+.song-card { background-color:white; border-radius:15px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:all 0.3s ease; }
+.song-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(10,147,150,0.3); }
+.album-image-link { display:block; width:100%; margin-bottom:15px; cursor:pointer; }
+.album-image { width:100%; height:280px; object-fit:contain; background-color:#f5f5f5; border-radius:10px; transition:all 0.3s ease; }
+.album-image-link:hover .album-image { transform:scale(1.05); box-shadow:0 4px 16px rgba(10,147,150,0.4); }
+.song-title { font-size:18px; font-weight:bold; color:#1b263b; margin-bottom:8px; }
+.artist-name { font-size:15px; color:#0a9396; margin-bottom:12px; font-weight:600; }
+.song-info { font-size:13px; color:#415a77; line-height:1.6; }
+.song-info strong { color:#1b263b; }
+footer { text-align:center; margin-top:60px; font-size:10pt; color:#415a77; }
+.overlay {
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:999; padding:20px;
+}
+.overlay:target { display:flex; }
+.overlay img { max-width:90%; max-height:90%; border-radius:15px; box-shadow:0 0 30px rgba(0,0,0,0.5); }
+.close-btn { position:absolute; top:30px; right:40px; color:white; font-size:40px; text-decoration:none; font-family:Arial, sans-serif; transition:color 0.3s; }
+.close-btn:hover { color:#0a9396; }
+@media screen and (max-width:768px){
+    .container{padding:20px 15px;}
+    h1{font-size:32px; letter-spacing:1px;}
+    .genre-title{font-size:26px;}
+    .songs-grid{grid-template-columns:1fr; gap:20px;}
+    .nav-btn{padding:10px 20px; font-size:12px;}
+    .album-image{height:240px;}
+}
+@media screen and (max-width:480px){
+    body{padding:10px;}
+    .container{padding:15px 10px;}
+    h1{font-size:26px;}
+    .genre-title{font-size:22px;}
+    .subtitle{font-size:14px;}
+    .nav-btn{width:100%; margin:5px 0;}
+    .bottom-nav{flex-direction:column; align-items:center;}
+    .album-image{height:200px;}
+    .song-card{padding:15px;}
+}
+</style>
 </head>
 <body>
-  <div id="top"></div>
-  
-  <div class="container">
-    <div class="top-nav">
-      <a href="index.html" class="nav-btn">← Landing Page</a>
-      <a href="biography.html" class="nav-btn">Biography</a>
-      <a href="blog1.html" class="nav-btn">Blog 1</a>
-      <a href="blog2.html" class="nav-btn">Blog 2</a>
-      <a href="blog3.html" class="nav-btn">Blog 3</a>
-      <a href="photoGallery.html" class="nav-btn">Photo Gallery</a>
-    </div>
+<div id="top"></div>
+<div class="container">
+<div class="top-nav">
+<a href="index.html" class="nav-btn">← Landing Page</a>
+<a href="biography.html" class="nav-btn">Biography</a>
+<a href="blog1.html" class="nav-btn">Blog 1</a>
+<a href="blog2.html" class="nav-btn">Blog 2</a>
+<a href="blog3.html" class="nav-btn">Blog 3</a>
+<a href="photogallery.html" class="nav-btn">Photo Gallery</a>
+</div>
 
-    <h1>My Beats</h1>
+<h1>My Beats</h1>
 
-    <!-- R&B / Soul -->
-    <div class="genre-section">
-      <h2 class="genre-title">R&B / Soul</h2>
-      <p class="genre-description">Smooth vibes for focus and relaxation</p>
-      <div class="songs-grid">
-        <div class="song-card">
-          <a href="#album1" class="album-image-link">
-            <img src="images/rnb1.jpg" alt="Nothing Was The Same Album" class="album-image">
-          </a>
-          <div class="song-title">Hold On, We're Going Home</div>
-          <div class="artist-name">Drake ft. Majid Jordan</div>
-          <div class="song-info">
-            <strong>Album:</strong> Nothing Was The Same<br>
-            <strong>Released:</strong> 2013<br>
-            Smooth R&B anthem with nostalgic vibes perfect for relaxation.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/rnb1.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+<div class="genre-section">
+<h2 class="genre-title">R&B / Soul</h2>
+<p class="genre-description">Smooth vibes for focus and relaxation</p>
+<div class="songs-grid">
 
-        <div class="song-card">
-          <a href="#album2" class="album-image-link">
-            <img src="images/rnb2.jpg" alt="Take Care Album" class="album-image">
-          </a>
-          <div class="song-title">Doing It Wrong</div>
-          <div class="artist-name">Drake ft. Stevie Wonder</div>
-          <div class="song-info">
-            <strong>Album:</strong> Take Care<br>
-            <strong>Released:</strong> 2011<br>
-            Emotional R&B ballad featuring Stevie Wonder's iconic harmonica.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/rnb2.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+<div class="song-card">
+<a href="#album1" class="album-image-link">
+<img src="images/rnb1.jpg" alt="Nothing Was The Same Album" class="album-image">
+</a>
+<div class="song-title">Hold On, We're Going Home</div>
+<div class="artist-name">Drake ft. Majid Jordan</div>
+<div class="song-info">
+<strong>Album:</strong> Nothing Was The Same<br>
+<strong>Released:</strong> 2013<br>
+Smooth R&B anthem with nostalgic vibes perfect for relaxation.
+</div>
+<audio controls preload="metadata" style="width:100%; margin-top:15px;">
+<source src="music/rnb1.mp3" type="audio/mpeg">
+</audio>
+</div>
 
-        <div class="song-card">
-          <a href="#album3" class="album-image-link">
-            <img src="images/rnb3.jpg" alt="Take Care Album" class="album-image">
-          </a>
-          <div class="song-title">Shot for Me</div>
-          <div class="artist-name">Drake</div>
-          <div class="song-info">
-            <strong>Album:</strong> Take Care<br>
-            <strong>Released:</strong> 2011<br>
-            Moody R&B track with smooth vocals and atmospheric production.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/rnb3.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-    </div>
+<div class="song-card">
+<a href="#album2" class="album-image-link">
+<img src="images/rnb2.jpg" alt="Take Care Album" class="album-image">
+</a>
+<div class="song-title">Doing It Wrong</div>
+<div class="artist-name">Drake ft. Stevie Wonder</div>
+<div class="song-info">
+<strong>Album:</strong> Take Care<br>
+<strong>Released:</strong> 2011<br>
+Emotional R&B ballad featuring Stevie Wonder's iconic harmonica.
+</div>
+<audio controls preload="metadata" style="width:100%; margin-top:15px;">
+<source src="music/rnb2.mp3" type="audio/mpeg">
+</audio>
+</div>
 
-    <!-- Hip-Hop / Rap -->
-    <div class="genre-section">
-      <h2 class="genre-title">Hip-Hop / Rap</h2>
-      <p class="genre-description">Energy and motivation for when I need that push</p>
-      <div class="songs-grid">
-        <div class="song-card">
-          <a href="#album4" class="album-image-link">
-            <img src="images/hiphop1.jpg" alt="Take Care Album" class="album-image">
-          </a>
-          <div class="song-title">Headlines</div>
-          <div class="artist-name">Drake</div>
-          <div class="song-info">
-            <strong>Album:</strong> Take Care<br>
-            <strong>Released:</strong> 2011<br>
-            Confident anthem with powerful production and memorable hook.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/hiphop1.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+<div class="song-card">
+<a href="#album3" class="album-image-link">
+<img src="images/rnb3.jpg" alt="Take Care Album" class="album-image">
+</a>
+<div class="song-title">Shot for Me</div>
+<div class="artist-name">Drake</div>
+<div class="song-info">
+<strong>Album:</strong> Take Care<br>
+<strong>Released:</strong> 2011<br>
+Moody R&B track with smooth vocals and atmospheric production.
+</div>
+<audio controls preload="metadata" style="width:100%; margin-top:15px;">
+<source src="music/rnb3.mp3" type="audio/mpeg">
+</audio>
+</div>
 
-        <div class="song-card">
-          <a href="#album5" class="album-image-link">
-            <img src="images/hiphop2.jpg" alt="T R A P S O U L Album" class="album-image">
-          </a>
-          <div class="song-title">Don't</div>
-          <div class="artist-name">Bryson Tiller</div>
-          <div class="song-info">
-            <strong>Album:</strong> T R A P S O U L<br>
-            <strong>Released:</strong> 2015<br>
-            Breakthrough trap soul hit with smooth vocals and emotional lyrics.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/hiphop2.mp3" type="audio/mpeg">
-          </audio>
-        </div>
+</div>
+</div>
 
-        <div class="song-card">
-          <a href="#album6" class="album-image-link">
-            <img src="images/hiphop3.jpg" alt="T R A P S O U L Album" class="album-image">
-          </a>
-          <div class="song-title">Let Em Know</div>
-          <div class="artist-name">Bryson Tiller</div>
-          <div class="song-info">
-            <strong>Album:</strong> T R A P S O U L<br>
-            <strong>Released:</strong> 2015<br>
-            Confident trap soul track with catchy production and flow.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/hiphop3.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-    </div>
+<div class="bottom-nav">
+<a href="#top" class="nav-btn btn-white">↑ Go to Top</a>
+<a href="index.html" class="nav-btn">← Landing Page</a>
+</div>
 
-    <!-- Pop Section -->
-    <div class="genre-section">
-      <h2 class="genre-title">Pop</h2>
-      <p class="genre-description">Feel-good tracks for any mood</p>
-      <div class="songs-grid">
-        <div class="song-card">
-          <a href="#album7" class="album-image-link">
-            <img src="images/pop1.jpg" alt="Spider-Man: Into the Spider-Verse Soundtrack" class="album-image">
-          </a>
-          <div class="song-title">Sunflower</div>
-          <div class="artist-name">Post Malone ft. Swae Lee</div>
-          <div class="song-info">
-            <strong>Album:</strong> Spider-Man: Into the Spider-Verse<br>
-            <strong>Released:</strong> 2018<br>
-            Feel-good anthem with catchy melodies and positive vibes.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/pop1.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-
-        <div class="song-card">
-          <a href="#album8" class="album-image-link">
-            <img src="images/pop2.jpg" alt="Doo-Wops & Hooligans Album" class="album-image">
-          </a>
-          <div class="song-title">Just The Way You Are</div>
-          <div class="artist-name">Bruno Mars</div>
-          <div class="song-info">
-            <strong>Album:</strong> Doo-Wops & Hooligans<br>
-            <strong>Released:</strong> 2010<br>
-            Romantic pop ballad with heartfelt lyrics and smooth vocals.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/pop2.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-
-        <div class="song-card">
-          <a href="#album9" class="album-image-link">
-            <img src="images/pop3.jpg" alt="X (Multiply) Album" class="album-image">
-          </a>
-          <div class="song-title">Photograph</div>
-          <div class="artist-name">Ed Sheeran</div>
-          <div class="song-info">
-            <strong>Album:</strong> X (Multiply)<br>
-            <strong>Released:</strong> 2014<br>
-            Emotional ballad about love and memories that lasts forever.
-          </div>
-          <audio controls preload="none" onerror="this.style.display='none'; console.warn('Audio missing: ' + this.currentSrc);">
-            <source src="music/pop3.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-    </div>
-
-    <div class="bottom-nav">
-      <a href="#top" class="nav-btn btn-white">↑ Go to Top</a>
-      <a href="index.html" class="nav-btn">← Landing Page</a>
-    </div>
-
-  </div>
-
-  <!-- Overlay modals for larger album view -->
-  <div id="album1" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/rnb1.jpg" alt="Nothing Was The Same Album"></div>
-  <div id="album2" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/rnb2.jpg" alt="Take Care Album"></div>
-  <div id="album3" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/rnb3.jpg" alt="Take Care Album"></div>
-  <div id="album4" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/hiphop1.jpg" alt="Take Care Album"></div>
-  <div id="album5" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/hiphop2.jpg" alt="T R A P S O U L Album"></div>
-  <div id="album6" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/hiphop3.jpg" alt="T R A P S O U L Album"></div>
-  <div id="album7" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/pop1.jpg" alt="Spider-Man: Into the Spider-Verse Album"></div>
-  <div id="album8" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/pop2.jpg" alt="Doo-Wops & Hooligans Album"></div>
-  <div id="album9" class="overlay"><a href="#close" class="close-btn">&times;</a><img src="images/pop3.jpg" alt="X (Multiply) Album"></div>
-
+</div>
 </body>
 </html>
