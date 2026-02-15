@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="HAMOY, KURT TOBEY">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biography - Kurt Tobey Hamoy</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background-color: #f0f8ff;
+      color: #1b263b;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .nav-btn {
+      background-color: #005f73;
+      color: white;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 10px;
+      font-family: Tahoma, Arial;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-btn:hover {
+      background-color: #007a8a;
+      transform: translateY(-2px);
+    }
+    
+    .btn-white {
+      background-color: white;
+      color: #005f73;
+      border: 2px solid #005f73;
+    }
+    
+    .btn-white:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .top-nav {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .bottom-nav {
+      text-align: center;
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: Georgia, serif;
+      letter-spacing: 2px;
+      color: #0a9396;
+      text-transform: uppercase;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #0a9396;
+      font-size: 24px;
+      border-left: 4px solid #0a9396;
+      padding-left: 15px;
+    }
+
+    p {
+      text-align: justify;
+      font-size: 12pt;
+      line-height: 1.8;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.08);
+      margin: 20px 0;
+    }
+
+    sup {
+      font-size: 9pt;
+      color: #ee6c4d;
+    }
+    
+    .image-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .bio-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      object-fit: cover;
+    }
+    
+    .bio-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(10,147,150,0.4);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 10pt;
+      color: #1b263b;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+      
+      h1 {
+        font-size: 28px;
+        letter-spacing: 1px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      p {
+        font-size: 11pt;
+        padding: 15px;
+      }
+      
+      .nav-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+      
+      h1 {
+        font-size: 22px;
+      }
+      
+      h2 {
+        font-size: 18px;
+        margin-top: 30px;
+      }
+      
+      p {
+        font-size: 10pt;
+        padding: 12px;
+        text-align: left;
+      }
+      
+      .nav-btn {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .bottom-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .bio-image {
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="top"></div>
+  
+  <div class="container">
+    <div class="top-nav" style="text-align:center; margin-bottom:30px;">
+      <a href="index.html" class="nav-btn">← Landing Page</a>
+      <a href="blog1.html" class="nav-btn">Blog 1</a>
+      <a href="blog2.html" class="nav-btn">Blog 2</a>
+      <a href="blog3.html" class="nav-btn">Blog 3</a>
+      <a href="photoGallery.html" class="nav-btn">Photo Gallery</a>
+      <a href="mybeats.html" class="nav-btn">My Beats</a>
+    </div>
+
+    <h1>The Story of My Early Years: Kurt Tobey Hamoy</h1>
+    
+    <div class="image-section">
+      <a href="IMAGES/profile.jpg">
+        <img src="IMAGES/profile.jpg" alt="Kurt Tobey Hamoy" class="bio-image" 
+             onerror="this.style.display='none'"/>
+      </a>
+      <p style="font-size: 10pt; color: #415a77; margin-top: 10px; background: none; box-shadow: none; padding: 5px;">
+        <em>Click image to view larger</em>
+      </p>
+    </div>
+
+    <h2>Childhood Years</h2>
+    <p>
+      <sup>1</sup> I was born in Quezon City as the third child in our family.
+      <sup>2</sup> We were two boys and two girl growing up together.
+      <sup>3</sup> Life was financially difficult during my childhood.
+      <sup>4</sup> My parents became parents at a young age.
+      <sup>5</sup> My father dreamed of becoming a policeman.
+      <sup>6</sup> He stopped studying to support our family.
+      <sup>7</sup> My mother stayed home to take care of us.
+      <sup>8</sup> Despite hardships, my parents stayed united.
+      <sup>9</sup> I witnessed many sacrifices from them.
+      <sup>10</sup> Responsibility was taught to me early.
+      <sup>11</sup> Arguments happened but forgiveness followed.
+      <sup>12</sup> These moments taught me family values.
+      <sup>13</sup> I trained in <strong>Taekwondo</strong> as a child.
+      <sup>14</sup> Training taught me discipline and patience.
+      <sup>15</sup> Pain helped build my strength.
+      <sup>16</sup> I learned endurance at a young age.
+      <sup>17</sup> My siblings and I shared a strong bond.
+      <sup>18</sup> I learned to value small victories.
+      <sup>19</sup> Challenges helped shape my character.
+      <sup>20</sup> Childhood formed the foundation of who I am.
+    </p>
+
+    <h2>Teenage Years</h2>
+    <p>
+      <sup>1</sup> My teenage years were full of learning experiences.
+      <sup>2</sup> I studied at Sta. Elena High School.
+      <sup>3</sup> I later transferred to OLOPSC.
+      <sup>4</sup> These years tested my maturity.
+      <sup>5</sup> I faced challenges that shaped my attitude.
+      <sup>6</sup> I learned accountability from my mistakes.
+      <sup>7</sup> Responsibility became important to me.
+      <sup>8</sup> I focused more on my studies.
+      <sup>9</sup> Sports became a big part of my life.
+      <sup>10</sup> Basketball and <em>Taekwondo</em> taught discipline.
+      <sup>11</sup> I joined school competitions.
+      <sup>12</sup> Recognition motivated me to improve.
+      <sup>13</sup> Friendships grew stronger.
+      <sup>14</sup> I learned teamwork and trust.
+      <sup>15</sup> Balancing school and friends was challenging.
+      <sup>16</sup> Failures helped me grow emotionally.
+      <sup>17</sup> I started setting personal goals.
+      <sup>18</sup> My confidence slowly improved.
+      <sup>19</sup> <b>Hard work</b> became my habit.
+      <sup>20</sup> My teenage years shaped my dreams.
+    </p>
+
+    <h2>College Years</h2>
+    <p>
+      <sup>1</sup> College marked a new chapter in my life.
+      <sup>2</sup> I pursued Information Technology.
+      <sup>3</sup> I enrolled at the University of the East.
+      <sup>4</sup> Independence was both exciting and scary.
+      <sup>5</sup> I learned time management.
+      <sup>6</sup> Academic work became harder.
+      <sup>7</sup> Some subjects tested my confidence.
+      <sup>8</sup> I learned to face challenges bravely.
+      <sup>9</sup> College improved my critical thinking.
+      <sup>10</sup> Group work improved communication.
+      <sup>11</sup> Teamwork became important.
+      <sup>12</sup> I discovered interest in technology.
+      <sup>13</sup> My passion for IT grew.
+      <sup>14</sup> Adjusting to college life was challenging.
+      <sup>15</sup> I learned from my decisions.
+      <sup>16</sup> Discipline became part of my routine.
+      <sup>17</sup> Balancing studies and hobbies was difficult.
+      <sup>18</sup> Friends helped motivate me.
+      <sup>19</sup> Challenges became learning experiences.
+      <sup>20</sup> College shaped me into a responsible person.
+    </p>
+
+    <div class="bottom-nav" style="text-align:center; margin-top:40px;">
+      <a href="#top" class="nav-btn btn-white">↑ Go to Top</a>
+      <a href="index.html" class="nav-btn">← Landing Page</a>
+    </div>
+
+    <footer>
+    </footer>
+  </div>
+
+</body>
+</html>

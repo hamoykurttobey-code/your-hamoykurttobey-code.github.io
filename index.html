@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurt Tobey Hamoy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #e6f2ff;
+      text-align: center;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .container {
+      padding: 100px 20px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .greeting {
+      font-size: 24px;
+      color: #415a77;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 50px;
+      color: #1b263b;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .highlight {
+      color: #0a9396;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #415a77;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+    .image-section {
+      margin: 40px auto;
+      max-width: 640px;
+      padding: 0 20px;
+    }
+    .image-link {
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+    .image-box {
+      position: relative;
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+    .hover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .image-box:hover .hover-image {
+      opacity: 1;
+    }
+    .image-box:hover .main-image {
+      opacity: 0;
+    }
+    .image-caption {
+      font-size: 14px;
+      color: #415a77;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .btn {
+      background-color: #005f73;
+      color: white;
+      padding: 15px 40px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      min-width: 150px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #007a8a;
+      transform: translateY(-2px);
+    }
+    .btn-white {
+      background-color: white;
+      color: #005f73;
+      border: 2px solid #005f73;
+    }
+    .btn-white:hover {
+      background-color: #f0f0f0;
+    }
+    .button-group {
+      margin-top: 30px;
+      margin-bottom: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 80px 15px 30px;
+      }
+      .greeting {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 36px;
+      }
+      .subtitle {
+        font-size: 14px;
+      }
+      .btn {
+        padding: 12px 30px;
+        min-width: 130px;
+        font-size: 13px;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .container {
+        padding: 60px 10px 20px;
+      }
+      .greeting {
+        font-size: 18px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .subtitle {
+        font-size: 13px;
+      }
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+      .image-caption {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="greeting">Hi, I'm Kurt Tobey Hamoy!</p>
+    <h1>Student, Dreamer,<br><span class="highlight">Future Developer</span></h1>
+    <p class="subtitle">IT Student learning to turn struggles into strength and dreams into reality. Sa gitna ng pagod, pinipili kong magpatuloy.</p>
+    <div class="image-section">
+      <a href="./biography.html" class="image-link">
+        <div class="image-box">
+          <img src="images/about-me.jpg" class="main-image" alt="About Me">
+          <img src="images/about-me-hover.jpg" class="hover-image" alt="About Me Hover">
+        </div>
+      </a>
+      <p class="image-caption">Click the image to learn more about me</p>
+    </div>
+    <div class="button-group">
+      <a href="./biography.html" class="btn">BIOGRAPHY</a>
+      <a href="./blog1.html" class="btn btn-white">BLOG 1</a>
+      <a href="./blog2.html" class="btn btn-white">BLOG 2</a>
+      <a href="./blog3.html" class="btn btn-white">BLOG 3</a>
+      <a href="./photoGallery.html" class="btn btn-white">PHOTO GALLERY</a>
+      <a href="./mybeats.html" class="btn btn-white">MY BEATS</a>
+    </div>
+  </div>
+</body>
+</html>
