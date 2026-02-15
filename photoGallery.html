@@ -6,17 +6,20 @@
 <title>PhotoGallery - Kurt Tobey Hamoy</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+
 body {
     background-color: #e6f2ff;
     font-family: Tahoma, Arial, sans-serif;
     padding: 20px;
     color: #1b263b;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 h1 {
     font-family: Georgia, serif;
     text-align: center;
@@ -24,6 +27,7 @@ h1 {
     color: #0a9396;
     margin-bottom: 10px;
 }
+
 .subtitle {
     text-align: center;
     font-family: Tahoma, Arial;
@@ -31,9 +35,11 @@ h1 {
     font-size: 16px;
     margin-bottom: 50px;
 }
+
 .category-section {
     margin: 60px 0;
 }
+
 .category-title {
     font-family: Georgia, serif;
     color: #0a9396;
@@ -41,6 +47,7 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 .category-description {
     text-align: center;
     font-family: Tahoma, Arial;
@@ -48,12 +55,14 @@ h1 {
     font-size: 14px;
     margin-bottom: 30px;
 }
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
     justify-items: center;
 }
+
 .image-link img {
     width: 100%;
     max-width: 250px;
@@ -64,12 +73,14 @@ h1 {
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
 img.border:hover { opacity: 1; border: 4px ridge lime olive lime olive; transform: scale(1.05);}
 img.border2:hover { opacity: 1; border: 4px dashed green orange green orange; transform: scale(1.05);}
 img.box1:hover { opacity: 1; box-shadow: 10px 10px 15px orange; transform: scale(1.05);}
 img.box2:hover { opacity: 1; box-shadow: 10px 10px 45px 5px fuchsia; transform: scale(1.05);}
 img.box3:hover { opacity: 1; box-shadow: 0 0 1px 1px rgba(99,255,119,0.75); transform: scale(1.05);}
 img.box3 { border:3px solid #ddd; }
+
 .nav-btn {
     background-color: #005f73;
     color: white;
@@ -82,13 +93,17 @@ img.box3 { border:3px solid #ddd; }
     display: inline-block;
     transition: all 0.3s ease;
 }
+
 .nav-btn:hover { background-color: #007a8a; transform: translateY(-2px); }
+
 .btn-white {
     background-color: white;
     color: #005f73;
     border: 2px solid #005f73;
 }
+
 .btn-white:hover { background-color: #f0f0f0; }
+
 .overlay {
     position: fixed;
     top: 0; left: 0;
@@ -100,7 +115,9 @@ img.box3 { border:3px solid #ddd; }
     z-index: 999;
     padding: 10px;
 }
+
 .overlay:target { display: flex; }
+
 .overlay img {
     max-width: 100%;
     max-height: 100%;
@@ -110,6 +127,7 @@ img.box3 { border:3px solid #ddd; }
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
+
 .close-btn {
     position: absolute;
     top: 20px;
@@ -119,11 +137,13 @@ img.box3 { border:3px solid #ddd; }
     text-decoration: none;
     font-family: Arial, sans-serif;
 }
+
 @media screen and (max-width: 768px) {
     h1 { font-size: 32px; }
     .category-title { font-size: 24px; }
     img { max-width: 180px; height: 180px; }
 }
+
 @media screen and (max-width: 480px) {
     body { padding: 10px; }
     h1 { font-size: 24px; }
@@ -154,8 +174,8 @@ img.box3 { border:3px solid #ddd; }
 <h2 class="category-title">Family</h2>
 <p class="category-description">Special moments with my family.</p>
 <div class="gallery-grid">
-    <a href="#img1" class="image-link"><img src="images/family1.jpg" class="border" alt="Special moment with my family"></a>
-    <a href="#img2" class="image-link"><img src="images/family2.jpg" class="border2" alt="Precious family time together"></a>
+    <a href="#img1" class="image-link"><img src="IMAGES/family1.jpg" class="border" alt="Special moment with my family" title="Special moment with my family"></a>
+    <a href="#img2" class="image-link"><img src="IMAGES/family2.jpg" class="border2" alt="Precious family time together" title="Precious family time together"></a>
 </div>
 </div>
 
@@ -163,30 +183,30 @@ img.box3 { border:3px solid #ddd; }
 <h2 class="category-title">Friends</h2>
 <p class="category-description">Memories with friends.</p>
 <div class="gallery-grid">
-    <a href="#img3" class="image-link"><img src="images/friends1.jpg" class="box1" alt="Fun times with friends"></a>
-    <a href="#img4" class="image-link"><img src="images/friends2.jpg" class="box2" alt="Great memories with my friends"></a>
+    <a href="#img3" class="image-link"><img src="IMAGES/friends1.jpg" class="box1" alt="Fun times with friends" title="Fun times with friends"></a>
+    <a href="#img4" class="image-link"><img src="IMAGES/friends2.jpg" class="box2" alt="Great memories with my friends" title="Great memories with my friends"></a>
 </div>
 </div>
 
 <div class="category-section">
 <h2 class="category-title">Girlfriend</h2>
 <div class="gallery-grid">
-    <a href="#img5" class="image-link"><img src="images/girlfriend1.jpg" class="box3" alt="Beautiful moment with my girlfriend"></a>
+    <a href="#img5" class="image-link"><img src="IMAGES/girlfriend1.jpg" class="box3" alt="Beautiful moment with my girlfriend" title="Beautiful moment with my girlfriend"></a>
 </div>
 </div>
 
 <div class="category-section">
 <h2 class="category-title">Hobby</h2>
 <div class="gallery-grid">
-    <a href="#img6" class="image-link"><img src="images/hobby1.jpg" class="box1" alt="Enjoying my favorite hobby"></a>
-    <a href="#img7" class="image-link"><img src="images/hobby2.jpg" class="box2" alt="Pursuing my passion and hobbies"></a>
+    <a href="#img6" class="image-link"><img src="IMAGES/hobby1.jpg" class="box1" alt="Enjoying my favorite hobby" title="Enjoying my favorite hobby"></a>
+    <a href="#img7" class="image-link"><img src="IMAGES/hobby2.jpg" class="box2" alt="Pursuing my passion and hobbies" title="Pursuing my passion and hobbies"></a>
 </div>
 </div>
 
 <div class="category-section">
 <h2 class="category-title">Dog</h2>
 <div class="gallery-grid">
-    <a href="#img8" class="image-link"><img src="images/dog1.jpg" class="box3" alt="My beloved dog"></a>
+    <a href="#img8" class="image-link"><img src="IMAGES/dog1.jpg" class="box3" alt="My beloved dog" title="My beloved dog"></a>
 </div>
 </div>
 
@@ -195,14 +215,14 @@ img.box3 { border:3px solid #ddd; }
     <a href="index.html" class="nav-btn">← Landing Page</a>
 </div>
 
-<div id="img1" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/family1.jpg" alt="Special moment with my family"></div>
-<div id="img2" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/family2.jpg" alt="Precious family time together"></div>
-<div id="img3" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/friends1.jpg" alt="Fun times with friends"></div>
-<div id="img4" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/friends2.jpg" alt="Great memories with my friends"></div>
-<div id="img5" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/girlfriend1.jpg" alt="Beautiful moment with my girlfriend"></div>
-<div id="img6" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/hobby1.jpg" alt="Enjoying my favorite hobby"></div>
-<div id="img7" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/hobby2.jpg" alt="Pursuing my passion and hobbies"></div>
-<div id="img8" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/dog1.jpg" alt="My beloved dog"></div>
+<div id="img1" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/family1.jpg" alt="Special moment with my family"></div>
+<div id="img2" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/family2.jpg" alt="Precious family time together"></div>
+<div id="img3" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/friends1.jpg" alt="Fun times with friends"></div>
+<div id="img4" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/friends2.jpg" alt="Great memories with my friends"></div>
+<div id="img5" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/girlfriend1.jpg" alt="Beautiful moment with my girlfriend"></div>
+<div id="img6" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/hobby1.jpg" alt="Enjoying my favorite hobby"></div>
+<div id="img7" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/hobby2.jpg" alt="Pursuing my passion and hobbies"></div>
+<div id="img8" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/dog1.jpg" alt="My beloved dog"></div>
 
 </div>
 </body>
