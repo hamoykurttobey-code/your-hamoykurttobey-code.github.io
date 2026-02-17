@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="HAMOY, KURT TOBEY">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Film Movies - Kurt Tobey Hamoy</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Tahoma, Arial, sans-serif; background-color: #e6f2ff; color: #1b263b; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .top-nav { text-align: center; margin-bottom: 30px; }
+    .bottom-nav { text-align: center; margin-top: 50px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .nav-btn { background-color: #005f73; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; text-align: center; transition: background-color 0.3s ease, transform 0.3s ease; }
+    .nav-btn:hover { background-color: #007a8a; transform: translateY(-2px); }
+    .nav-current { background-color: #0a9396; color: white; padding: 12px 20px; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; font-weight: bold; cursor: default; }
+    .btn-white { background-color: white; color: #005f73; border: 2px solid #005f73; }
+    .btn-white:hover { background-color: #f0f0f0; }
+    h1 { text-align: center; font-family: Georgia, serif; letter-spacing: 2px; color: #0a9396; text-transform: uppercase; font-size: 42px; margin-bottom: 15px; }
+    .subtitle { text-align: center; font-size: 16px; color: #415a77; margin-bottom: 50px; }
+    .genre-section { margin: 60px 0; }
+    .genre-title { font-family: Georgia, serif; color: #0a9396; font-size: 32px; text-align: center; margin-bottom: 10px; }
+    .genre-description { text-align: center; color: #415a77; font-size: 14px; margin-bottom: 30px; font-style: italic; }
+    .movies-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 0 10px; }
+    .movie-card { background-color: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .movie-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(10,147,150,0.3); }
+    .poster-link { display: block; width: 100%; overflow: hidden; }
+    .poster-img { width: 100%; height: 380px; object-fit: cover; display: block; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .poster-link:hover .poster-img { transform: scale(1.04); opacity: 0.88; }
+    .card-body { padding: 20px; }
+    .movie-title { font-size: 17px; font-weight: bold; color: #1b263b; margin-bottom: 6px; }
+    .movie-meta { font-size: 13px; color: #0a9396; font-weight: 600; margin-bottom: 10px; }
+    .movie-info { font-size: 13px; color: #415a77; line-height: 1.7; margin-bottom: 12px; }
+    .movie-info strong { color: #1b263b; }
+    .synopsis { font-size: 13px; color: #415a77; line-height: 1.6; font-style: italic; border-left: 3px solid #0a9396; padding-left: 10px; margin-bottom: 14px; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); display: none; justify-content: center; align-items: center; z-index: 999; padding: 20px; }
+    .overlay:target { display: flex; }
+    .overlay img { max-width: 50%; max-height: 90%; border-radius: 15px; box-shadow: 0 0 40px rgba(0,0,0,0.6); object-fit: contain; }
+    .close-btn { position: absolute; top: 25px; right: 40px; color: white; font-size: 42px; text-decoration: none; font-family: Arial, sans-serif; line-height: 1; transition: color 0.3s ease; }
+    .close-btn:hover { color: #0a9396; }
+
+    @media screen and (max-width: 960px) {
+      .movies-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      h1 { font-size: 34px; }
+      .genre-title { font-size: 26px; }
+    }
+    @media screen and (max-width: 600px) {
+      body { padding: 10px; }
+      .container { padding: 20px 10px; }
+      h1 { font-size: 26px; letter-spacing: 1px; }
+      .subtitle { font-size: 14px; }
+      .genre-title { font-size: 22px; }
+      .genre-section { margin: 40px 0; }
+      .movies-grid { grid-template-columns: 1fr; gap: 20px; }
+      .nav-btn, .nav-current { width: 100%; margin: 4px 0; display: block; }
+      .bottom-nav { flex-direction: column; align-items: center; }
+      .poster-img { height: 260px; object-fit: cover; }
+      .card-body { padding: 15px; }
+      .overlay img { max-width: 92%; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div class="container">
+
+    <div class="top-nav">
+      <a href="index.html" class="nav-btn">Landing Page</a>
+      <a href="biography.html" class="nav-btn">Biography</a>
+      <a href="blog1.html" class="nav-btn">Blog 1</a>
+      <a href="blog2.html" class="nav-btn">Blog 2</a>
+      <a href="blog3.html" class="nav-btn">Blog 3</a>
+      <a href="photoGallery.html" class="nav-btn">Photo Gallery</a>
+      <a href="mybeats.html" class="nav-btn">My Beats</a>
+      <span class="nav-current">My Film Movies</span>
+      <a href="filmTVShows.html" class="nav-btn">My Film TV Shows</a>
+    </div>
+
+    <h1>My Film Movies</h1>
+    <p class="subtitle">My personal collection of favorite films &mdash; handpicked across comedy, romance, and action.</p>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">Comedy</h2>
+      <p class="genre-description">Movies that never fail to make me laugh</p>
+      <div class="movies-grid">
+
+        <div class="movie-card">
+          <a href="#poster-m1" class="poster-link">
+            <img src="images/the-mask.jpg" alt="The Mask Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">The Mask</div>
+            <div class="movie-meta">1994 &nbsp;|&nbsp; PG-13 &nbsp;|&nbsp; 1h 41m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Chuck Russell<br>
+              <strong>Stars:</strong> Jim Carrey, Cameron Diaz, Peter Greene
+            </div>
+            <p class="synopsis">A mild-mannered bank clerk discovers an ancient mask that transforms him into a wild, cartoonish superhero &mdash; hilarious chaos follows.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/hOqVRwGVUkA" title="The Mask Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m2" class="poster-link">
+            <img src="images/ang-pangarap-kong-holdap.jpg" alt="Ang Pangarap Kong Holdap Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Ang Pangarap Kong Holdap</div>
+            <div class="movie-meta">2022 &nbsp;|&nbsp; R-13 &nbsp;|&nbsp; 1h 40m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Roman Perez Jr.<br>
+              <strong>Stars:</strong> Joshua Garcia, Kokoy de Santos, Vance Larena
+            </div>
+            <p class="synopsis">Three broke best friends hatch a plan to rob a bank to solve their problems &mdash; a hilarious Filipino comedy about friendship, dreams, and going all-in.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/v290BRgcZwM" title="Ang Pangarap Kong Holdap Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m3" class="poster-link">
+            <img src="images/hancock.jpg" alt="Hancock Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Hancock</div>
+            <div class="movie-meta">2008 &nbsp;|&nbsp; PG-13 &nbsp;|&nbsp; 1h 32m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Peter Berg<br>
+              <strong>Stars:</strong> Will Smith, Charlize Theron, Jason Bateman
+            </div>
+            <p class="synopsis">A superhero with a bad attitude and a drinking problem reluctantly agrees to a PR makeover &mdash; a funny and surprisingly emotional ride.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/E-MOzwWySaQ" title="Hancock Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">Romance</h2>
+      <p class="genre-description">Love stories that hit different</p>
+      <div class="movies-grid">
+
+        <div class="movie-card">
+          <a href="#poster-m4" class="poster-link">
+            <img src="images/till-i-met-you.jpg" alt="Till I Met You Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Till I Met You</div>
+            <div class="movie-meta">2016 &nbsp;|&nbsp; ABS-CBN &nbsp;|&nbsp; Teleserye</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Cathy Garcia-Molina<br>
+              <strong>Stars:</strong> James Reid, Nadine Lustre
+            </div>
+            <p class="synopsis">Two strangers with complicated pasts find unexpected love in Greece &mdash; a sweeping, romantic teleserye that captured all of the Philippines.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/UXUX4JDqJoY" title="Till I Met You Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m5" class="poster-link">
+            <img src="images/titanic.jpg" alt="Titanic Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Titanic</div>
+            <div class="movie-meta">1997 &nbsp;|&nbsp; PG-13 &nbsp;|&nbsp; 3h 14m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> James Cameron<br>
+              <strong>Stars:</strong> Leonardo DiCaprio, Kate Winslet
+            </div>
+            <p class="synopsis">A poor artist and a wealthy socialite fall deeply in love aboard the ill-fated RMS Titanic &mdash; one of the greatest love stories ever told.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/CHekzSiZjrY" title="Titanic Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m6" class="poster-link">
+            <img src="images/the-hows-of-us.jpg" alt="The Hows of Us Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">The Hows of Us</div>
+            <div class="movie-meta">2018 &nbsp;|&nbsp; PG &nbsp;|&nbsp; 2h 4m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Cathy Garcia-Molina<br>
+              <strong>Stars:</strong> Kathryn Bernardo, Daniel Padilla
+            </div>
+            <p class="synopsis">Two young lovers navigate the highs and lows of a long-term relationship &mdash; a raw, honest, and deeply moving Filipino romance.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/9C5w28q6JgA" title="The Hows of Us Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">Action</h2>
+      <p class="genre-description">High-energy films that keep me at the edge of my seat</p>
+      <div class="movies-grid">
+
+        <div class="movie-card">
+          <a href="#poster-m7" class="poster-link">
+            <img src="images/bad-boys.jpg" alt="Bad Boys Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Bad Boys</div>
+            <div class="movie-meta">1995 &nbsp;|&nbsp; R &nbsp;|&nbsp; 1h 59m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Michael Bay<br>
+              <strong>Stars:</strong> Will Smith, Martin Lawrence
+            </div>
+            <p class="synopsis">Two Miami detectives must protect a witness while investigating a drug heist &mdash; an explosive, hilarious buddy cop action classic.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/Xm12NSa8jsM" title="Bad Boys Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m8" class="poster-link">
+            <img src="images/john-wick.jpg" alt="John Wick Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">John Wick</div>
+            <div class="movie-meta">2014 &nbsp;|&nbsp; R &nbsp;|&nbsp; 1h 41m</div>
+            <div class="movie-info">
+              <strong>Director:</strong> Chad Stahelski<br>
+              <strong>Stars:</strong> Keanu Reeves, Michael Nyqvist, Alfie Allen
+            </div>
+            <p class="synopsis">A retired hitman unleashes vengeance after criminals kill his dog &mdash; a gift from his late wife. A masterpiece of modern action cinema.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/C0BMx-qxsP4" title="John Wick Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card">
+          <a href="#poster-m9" class="poster-link">
+            <img src="images/avengers-endgame.jpg" alt="Avengers Endgame Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="movie-title">Avengers: Endgame</div>
+            <div class="movie-meta">2019 &nbsp;|&nbsp; PG-13 &nbsp;|&nbsp; 3h 1m</div>
+            <div class="movie-info">
+              <strong>Directors:</strong> Anthony &amp; Joe Russo<br>
+              <strong>Stars:</strong> Robert Downey Jr., Chris Evans, Scarlett Johansson
+            </div>
+            <p class="synopsis">The surviving Avengers assemble one last time to reverse Thanos&rsquo; devastation &mdash; the ultimate superhero epic and an emotional farewell to an era.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" title="Avengers Endgame Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="#top" class="nav-btn btn-white">&#8593; Go to Top</a>
+      <a href="index.html" class="nav-btn">Landing Page</a>
+    </div>
+
+  </div>
+
+  <div id="poster-m1" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/the-mask.jpg" alt="The Mask Poster"></div>
+  <div id="poster-m2" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/ang-pangarap-kong-holdap.jpg" alt="Ang Pangarap Kong Holdap Poster"></div>
+  <div id="poster-m3" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/hancock.jpg" alt="Hancock Poster"></div>
+  <div id="poster-m4" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/till-i-met-you.jpg" alt="Till I Met You Poster"></div>
+  <div id="poster-m5" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/titanic.jpg" alt="Titanic Poster"></div>
+  <div id="poster-m6" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/the-hows-of-us.jpg" alt="The Hows of Us Poster"></div>
+  <div id="poster-m7" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/bad-boys.jpg" alt="Bad Boys Poster"></div>
+  <div id="poster-m8" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/john-wick.jpg" alt="John Wick Poster"></div>
+  <div id="poster-m9" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/avengers-endgame.jpg" alt="Avengers Endgame Poster"></div>
+
+</body>
+</html>

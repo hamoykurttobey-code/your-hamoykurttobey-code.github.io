@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="HAMOY, KURT TOBEY">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Film TV Shows - Kurt Tobey Hamoy</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Tahoma, Arial, sans-serif; background-color: #e6f2ff; color: #1b263b; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .top-nav { text-align: center; margin-bottom: 30px; }
+    .bottom-nav { text-align: center; margin-top: 50px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .nav-btn { background-color: #005f73; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; text-align: center; transition: background-color 0.3s ease, transform 0.3s ease; }
+    .nav-btn:hover { background-color: #007a8a; transform: translateY(-2px); }
+    .nav-current { background-color: #0a9396; color: white; padding: 12px 20px; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; font-weight: bold; cursor: default; }
+    .btn-white { background-color: white; color: #005f73; border: 2px solid #005f73; }
+    .btn-white:hover { background-color: #f0f0f0; }
+    h1 { text-align: center; font-family: Georgia, serif; letter-spacing: 2px; color: #0a9396; text-transform: uppercase; font-size: 42px; margin-bottom: 15px; }
+    .subtitle { text-align: center; font-size: 16px; color: #415a77; margin-bottom: 50px; }
+    .genre-section { margin: 60px 0; }
+    .genre-title { font-family: Georgia, serif; color: #0a9396; font-size: 32px; text-align: center; margin-bottom: 10px; }
+    .genre-description { text-align: center; color: #415a77; font-size: 14px; margin-bottom: 30px; font-style: italic; }
+    .shows-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 0 10px; }
+    .show-card { background-color: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .show-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(10,147,150,0.3); }
+    .poster-link { display: block; width: 100%; overflow: hidden; }
+    .poster-img { width: 100%; height: 380px; object-fit: cover; display: block; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .poster-link:hover .poster-img { transform: scale(1.04); opacity: 0.88; }
+    .card-body { padding: 20px; }
+    .show-title { font-size: 17px; font-weight: bold; color: #1b263b; margin-bottom: 6px; }
+    .show-meta { font-size: 13px; color: #0a9396; font-weight: 600; margin-bottom: 10px; }
+    .show-info { font-size: 13px; color: #415a77; line-height: 1.7; margin-bottom: 12px; }
+    .show-info strong { color: #1b263b; }
+    .synopsis { font-size: 13px; color: #415a77; line-height: 1.6; font-style: italic; border-left: 3px solid #0a9396; padding-left: 10px; margin-bottom: 14px; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); display: none; justify-content: center; align-items: center; z-index: 999; padding: 20px; }
+    .overlay:target { display: flex; }
+    .overlay img { max-width: 50%; max-height: 90%; border-radius: 15px; box-shadow: 0 0 40px rgba(0,0,0,0.6); object-fit: contain; }
+    .close-btn { position: absolute; top: 25px; right: 40px; color: white; font-size: 42px; text-decoration: none; font-family: Arial, sans-serif; line-height: 1; transition: color 0.3s ease; }
+    .close-btn:hover { color: #0a9396; }
+
+    @media screen and (max-width: 960px) {
+      .shows-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      h1 { font-size: 34px; }
+      .genre-title { font-size: 26px; }
+    }
+    @media screen and (max-width: 600px) {
+      body { padding: 10px; }
+      .container { padding: 20px 10px; }
+      h1 { font-size: 26px; letter-spacing: 1px; }
+      .subtitle { font-size: 14px; }
+      .genre-title { font-size: 22px; }
+      .genre-section { margin: 40px 0; }
+      .shows-grid { grid-template-columns: 1fr; gap: 20px; }
+      .nav-btn, .nav-current { width: 100%; margin: 4px 0; display: block; }
+      .bottom-nav { flex-direction: column; align-items: center; }
+      .poster-img { height: 260px; object-fit: cover; }
+      .card-body { padding: 15px; }
+      .overlay img { max-width: 92%; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div class="container">
+
+    <div class="top-nav">
+      <a href="index.html" class="nav-btn">Landing Page</a>
+      <a href="biography.html" class="nav-btn">Biography</a>
+      <a href="blog1.html" class="nav-btn">Blog 1</a>
+      <a href="blog2.html" class="nav-btn">Blog 2</a>
+      <a href="blog3.html" class="nav-btn">Blog 3</a>
+      <a href="photoGallery.html" class="nav-btn">Photo Gallery</a>
+      <a href="mybeats.html" class="nav-btn">My Beats</a>
+      <a href="filmMovies.html" class="nav-btn">My Film Movies</a>
+      <a href="filmTVShows.html" class="nav-btn">My Film TV Shows</a>
+    </div>
+
+    <h1>My Film TV Shows</h1>
+    <p class="subtitle">Series I keep coming back to &mdash; K-Dramas, romance teleseryes, and action-packed shows.</p>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">K-Drama</h2>
+      <p class="genre-description">Korean dramas that completely captured my heart</p>
+      <div class="shows-grid">
+
+        <div class="show-card">
+          <a href="#poster-t1" class="poster-link">
+            <img src="images/twenty-five-twenty-one.jpg" alt="Twenty Five Twenty One Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Twenty-Five Twenty-One</div>
+            <div class="show-meta">2022 &nbsp;|&nbsp; tvN &nbsp;|&nbsp; 16 Episodes</div>
+            <div class="show-info">
+              <strong>Director:</strong> Jung Ji-hyun<br>
+              <strong>Stars:</strong> Kim Tae-ri, Nam Joo-hyuk
+            </div>
+            <p class="synopsis">During the 1998 financial crisis, a fencer and a young man pursuing his dreams form an unforgettable bond &mdash; a bittersweet, beautifully written coming-of-age romance.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/gYp4cKumTwU" title="Twenty Five Twenty One Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t2" class="poster-link">
+            <img src="images/weightlifting-fairy.jpg" alt="Weightlifting Fairy Kim Bok Joo Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Weightlifting Fairy Kim Bok-joo</div>
+            <div class="show-meta">2016&ndash;2017 &nbsp;|&nbsp; MBC &nbsp;|&nbsp; 16 Episodes</div>
+            <div class="show-info">
+              <strong>Director:</strong> Oh Hyun-jong<br>
+              <strong>Stars:</strong> Lee Sung-kyung, Nam Joo-hyuk
+            </div>
+            <p class="synopsis">A talented weightlifter and a swimmer rediscover their childhood friendship while chasing their athletic dreams &mdash; a warm, funny, and deeply heartfelt romance.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/6t5dLenA85Y" title="Weightlifting Fairy Kim Bok Joo Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t3" class="poster-link">
+            <img src="images/crash-landing-on-you.jpg" alt="Crash Landing on You Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Crash Landing on You</div>
+            <div class="show-meta">2019&ndash;2020 &nbsp;|&nbsp; tvN &nbsp;|&nbsp; 16 Episodes</div>
+            <div class="show-info">
+              <strong>Director:</strong> Lee Jeong-hyo<br>
+              <strong>Stars:</strong> Son Ye-jin, Hyun Bin
+            </div>
+            <p class="synopsis">A South Korean heiress accidentally paraglides into North Korea and falls in love with an elite army officer &mdash; a stunning romance across divided borders.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/GVQGWgeVc4k" title="Crash Landing on You Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">Romance</h2>
+      <p class="genre-description">Teleseryes and shows that hit close to the heart</p>
+      <div class="shows-grid">
+
+        <div class="show-card">
+          <a href="#poster-t4" class="poster-link">
+            <img src="images/on-the-wings-of-love.jpg" alt="On the Wings of Love Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">On the Wings of Love</div>
+            <div class="show-meta">2015&ndash;2016 &nbsp;|&nbsp; ABS-CBN &nbsp;|&nbsp; Teleserye</div>
+            <div class="show-info">
+              <strong>Director:</strong> Antoinette Jadaone<br>
+              <strong>Stars:</strong> James Reid, Nadine Lustre
+            </div>
+            <p class="synopsis">Two strangers enter a marriage of convenience in the US, only to fall genuinely in love &mdash; a beloved Filipino teleserye that swept the nation.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/KcvuVKA6H9c" title="On the Wings of Love Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t5" class="poster-link">
+            <img src="images/dolce-amore.jpg" alt="Dolce Amore Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Dolce Amore</div>
+            <div class="show-meta">2016 &nbsp;|&nbsp; ABS-CBN &nbsp;|&nbsp; Teleserye</div>
+            <div class="show-info">
+              <strong>Stars:</strong> Enrique Gil, Liza Soberano
+            </div>
+            <p class="synopsis">A Filipino-Italian love story set in the beautiful backdrop of Italy &mdash; a sweet and charming teleserye full of passion and heartfelt moments.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/AW3DgOM5YjM" title="Dolce Amore Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t6" class="poster-link">
+            <img src="images/the-world-between-us.jpg" alt="The World Between Us Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">The World Between Us</div>
+            <div class="show-meta">2021 &nbsp;|&nbsp; GMA &nbsp;|&nbsp; Teleserye</div>
+            <div class="show-info">
+              <strong>Stars:</strong> Alden Richards, Jasmine Curtis-Smith
+            </div>
+            <p class="synopsis">A love story between two people from completely different worlds who find each other against all odds &mdash; a heartwarming and emotional Filipino drama.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/OHq5HP0tJik" title="The World Between Us Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="genre-section">
+      <h2 class="genre-title">Action</h2>
+      <p class="genre-description">High-octane series that keep me hooked every episode</p>
+      <div class="shows-grid">
+
+        <div class="show-card">
+          <a href="#poster-t7" class="poster-link">
+            <img src="images/the-flash.jpg" alt="The Flash Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">The Flash</div>
+            <div class="show-meta">2014&ndash;2023 &nbsp;|&nbsp; The CW &nbsp;|&nbsp; 9 Seasons</div>
+            <div class="show-info">
+              <strong>Creator:</strong> Greg Berlanti<br>
+              <strong>Stars:</strong> Grant Gustin, Candice Patton, Tom Cavanagh
+            </div>
+            <p class="synopsis">A forensic scientist struck by lightning gains superhuman speed and becomes The Flash &mdash; a fun, emotional, and action-packed superhero series.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/IgVyroQjZbE" title="The Flash Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t8" class="poster-link">
+            <img src="images/arrow.jpg" alt="Arrow Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Arrow</div>
+            <div class="show-meta">2012&ndash;2020 &nbsp;|&nbsp; The CW &nbsp;|&nbsp; 8 Seasons</div>
+            <div class="show-info">
+              <strong>Creator:</strong> Greg Berlanti<br>
+              <strong>Stars:</strong> Stephen Amell, Emily Bett Rickards, David Ramsey
+            </div>
+            <p class="synopsis">A billionaire returns from a deserted island as a hooded vigilante to save his city &mdash; the gritty DC series that launched the entire Arrowverse.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/Apn96-Jk-yE" title="Arrow Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="show-card">
+          <a href="#poster-t9" class="poster-link">
+            <img src="images/cobra-kai.jpg" alt="Cobra Kai Poster" class="poster-img">
+          </a>
+          <div class="card-body">
+            <div class="show-title">Cobra Kai</div>
+            <div class="show-meta">2018&ndash;2025 &nbsp;|&nbsp; Netflix &nbsp;|&nbsp; 6 Seasons</div>
+            <div class="show-info">
+              <strong>Creators:</strong> Josh Heald, Jon Hurwitz, Hayden Schlossberg<br>
+              <strong>Stars:</strong> Ralph Macchio, William Zabka
+            </div>
+            <p class="synopsis">Decades after the Karate Kid tournament, rivals reconnect as karate teachers with competing philosophies &mdash; a brilliant, action-packed continuation of a classic.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/xCwwxNbtK6Y" title="Cobra Kai Trailer" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="#top" class="nav-btn btn-white">&#8593; Go to Top</a>
+      <a href="index.html" class="nav-btn">Landing Page</a>
+    </div>
+
+  </div>
+
+  <div id="poster-t1" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/twenty-five-twenty-one.jpg" alt="Twenty Five Twenty One Poster"></div>
+  <div id="poster-t2" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/weightlifting-fairy.jpg" alt="Weightlifting Fairy Kim Bok Joo Poster"></div>
+  <div id="poster-t3" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/crash-landing-on-you.jpg" alt="Crash Landing on You Poster"></div>
+  <div id="poster-t4" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/on-the-wings-of-love.jpg" alt="On the Wings of Love Poster"></div>
+  <div id="poster-t5" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/dolce-amore.jpg" alt="Dolce Amore Poster"></div>
+  <div id="poster-t6" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/the-world-between-us.jpg" alt="The World Between Us Poster"></div>
+  <div id="poster-t7" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/the-flash.jpg" alt="The Flash Poster"></div>
+  <div id="poster-t8" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/arrow.jpg" alt="Arrow Poster"></div>
+  <div id="poster-t9" class="overlay"><a href="#top" class="close-btn">&times;</a><img src="images/cobra-kai.jpg" alt="Cobra Kai Poster"></div>
+
+</body>
+</html>
