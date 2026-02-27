@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="HAMOY, KURT TOBEY">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PhotoGallery - Kurt Tobey Hamoy</title>
 <style>
@@ -33,54 +34,95 @@ h1 {
     font-family: Tahoma, Arial;
     color: #415a77;
     font-size: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-.category-section {
-    margin: 60px 0;
+/* ── CSS TABS ── */
+.tab-radio { display: none; }
+
+.tab-labels {
+    display: flex;
+    justify-content: center;
+    background-color: #e8eef3;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    border: 1px solid #ccd8e0;
 }
 
-.category-title {
-    font-family: Georgia, serif;
-    color: #0a9396;
-    font-size: 32px;
+.tab-label {
+    flex: 1;
     text-align: center;
-    margin-bottom: 20px;
+    padding: 16px 20px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 15px;
+    color: #415a77;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-right: 1px solid #ccd8e0;
+    user-select: none;
 }
 
+.tab-label:last-child { border-right: none; }
+.tab-label:hover { background-color: #d4e4ec; color: #005f73; }
+
+/* Active tab style */
+#tab1:checked ~ .tab-labels label[for="tab1"],
+#tab2:checked ~ .tab-labels label[for="tab2"],
+#tab3:checked ~ .tab-labels label[for="tab3"] {
+    background-color: #005f73;
+    color: white;
+    font-weight: bold;
+}
+
+/* Tab content */
+.tab-content { display: none; }
+
+#tab1:checked ~ .tab-contents .content1,
+#tab2:checked ~ .tab-contents .content2,
+#tab3:checked ~ .tab-contents .content3 {
+    display: block;
+}
+
+.tab-contents { margin-top: 10px; }
+
+/* GALLERY */
 .category-description {
     text-align: center;
     font-family: Tahoma, Arial;
     color: #415a77;
     font-size: 14px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
     justify-items: center;
 }
 
 .image-link img {
     width: 100%;
     max-width: 250px;
-    height: 250px;
-    border-radius: 20px;
-    opacity: 0.6;
+    height: 200px;
+    border-radius: 16px;
+    opacity: 0.65;
     object-fit: cover;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-img.border:hover { opacity: 1; border: 4px ridge lime olive lime olive; transform: scale(1.05);}
-img.border2:hover { opacity: 1; border: 4px dashed green orange green orange; transform: scale(1.05);}
-img.box1:hover { opacity: 1; box-shadow: 10px 10px 15px orange; transform: scale(1.05);}
-img.box2:hover { opacity: 1; box-shadow: 10px 10px 45px 5px fuchsia; transform: scale(1.05);}
-img.box3:hover { opacity: 1; box-shadow: 0 0 1px 1px rgba(99,255,119,0.75); transform: scale(1.05);}
-img.box3 { border:3px solid #ddd; }
+img.border:hover  { opacity: 1; border: 4px ridge lime; transform: scale(1.05); }
+img.border2:hover { opacity: 1; border: 4px dashed orange; transform: scale(1.05); }
+img.box1:hover    { opacity: 1; box-shadow: 10px 10px 15px orange; transform: scale(1.05); }
+img.box2:hover    { opacity: 1; box-shadow: 10px 10px 45px 5px fuchsia; transform: scale(1.05); }
+img.box3:hover    { opacity: 1; box-shadow: 0 0 10px 3px rgba(99,255,119,0.75); transform: scale(1.05); }
+img.box3          { border: 3px solid #ddd; }
+img.box4:hover    { opacity: 1; box-shadow: 0 0 15px 4px rgba(100,149,237,0.8); transform: scale(1.05); }
+img.box5:hover    { opacity: 1; box-shadow: 0 0 15px 4px rgba(255,105,180,0.8); transform: scale(1.05); }
 
+/* NAV */
 .nav-btn {
     background-color: #005f73;
     color: white;
@@ -89,68 +131,44 @@ img.box3 { border:3px solid #ddd; }
     border-radius: 5px;
     margin: 5px;
     font-family: Tahoma, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     display: inline-block;
     transition: all 0.3s ease;
 }
-
 .nav-btn:hover { background-color: #007a8a; transform: translateY(-2px); }
-
-.btn-white {
-    background-color: white;
-    color: #005f73;
-    border: 2px solid #005f73;
+.nav-current {
+    background-color: #0a9396;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 }
-
+.btn-white { background-color: white; color: #005f73; border: 2px solid #005f73; }
 .btn-white:hover { background-color: #f0f0f0; }
 
-.overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    padding: 10px;
+/* RESPONSIVE */
+@media screen and (max-width: 960px) {
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); }
 }
-
-.overlay:target { display: flex; }
-
-.overlay img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 30px;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-}
-
 @media screen and (max-width: 768px) {
-    h1 { font-size: 32px; }
-    .category-title { font-size: 24px; }
-    img { max-width: 180px; height: 180px; }
+    h1 { font-size: 28px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .nav-btn, .nav-current { display: block; width: 100%; margin: 4px 0; text-align: center; }
+    .tab-label { font-size: 13px; padding: 12px 8px; }
 }
-
 @media screen and (max-width: 480px) {
     body { padding: 10px; }
-    h1 { font-size: 24px; }
-    .category-title { font-size: 20px; }
-    .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
-    img { max-width: 100%; height: auto; aspect-ratio: 1; }
-    .nav-btn { display:block; width:80%; margin:10px auto; max-width:200px; }
+    h1 { font-size: 22px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .image-link img { height: 140px; }
+    .tab-label { font-size: 11px; padding: 10px 5px; }
 }
 </style>
 </head>
@@ -158,77 +176,90 @@ img.box3 { border:3px solid #ddd; }
 
 <div id="top" class="container">
 
-<div class="top-nav" style="text-align:center; margin-bottom:30px;">
-    <a href="index.html" class="nav-btn">← Landing Page</a>
+  <div style="text-align:center; margin-bottom:30px;">
+    <a href="index.html" class="nav-btn">Landing Page</a>
     <a href="biography.html" class="nav-btn">Biography</a>
     <a href="blog1.html" class="nav-btn">Blog 1</a>
     <a href="blog2.html" class="nav-btn">Blog 2</a>
     <a href="blog3.html" class="nav-btn">Blog 3</a>
+    <span class="nav-current">Photo Gallery</span>
     <a href="mybeats.html" class="nav-btn">My Beats</a>
     <a href="filmMovies.html" class="nav-btn">My Film Movies</a>
     <a href="filmTVShows.html" class="nav-btn">My Film TV Shows</a>
-    <a href="./dreamPlaces.html" class="nav-btn">Dream Places</a>
-    <a href="./bucketList.html" class="nav-btn">Bucket List</a>
-</div>
+    <a href="dreamPlaces.html" class="nav-btn">Dream Places</a>
+    <a href="bucketList.html" class="nav-btn">Bucket List</a>
+  </div>
 
-<h1>My <span style="color:#0a9396;">Photo Gallery</span></h1>
-<p class="subtitle">Click a photo to view it larger</p>
+  <h1>My <span style="color:#0a9396;">Photo Gallery</span></h1>
+  <p class="subtitle">Click a photo to view it larger</p>
 
-<div class="category-section">
-<h2 class="category-title">Family</h2>
-<p class="category-description">Special moments with my family.</p>
-<div class="gallery-grid">
-    <a href="#img1" class="image-link"><img src="images/family1.jpg" class="border" alt="Special moment with my family" title="Special moment with my family"></a>
-    <a href="#img2" class="image-link"><img src="images/family2.jpg" class="border2" alt="Precious family time together" title="Precious family time together"></a>
-</div>
-</div>
+  <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
+  <input type="radio" name="tabs" id="tab2" class="tab-radio">
+  <input type="radio" name="tabs" id="tab3" class="tab-radio">
 
-<div class="category-section">
-<h2 class="category-title">Friends</h2>
-<p class="category-description">Memories with friends.</p>
-<div class="gallery-grid">
-    <a href="#img3" class="image-link"><img src="images/friends1.jpg" class="box1" alt="Fun times with friends" title="Fun times with friends"></a>
-    <a href="#img4" class="image-link"><img src="images/friends2.jpg" class="box2" alt="Great memories with my friends" title="Great memories with my friends"></a>
-</div>
-</div>
+  <div class="tab-labels">
+    <label for="tab1" class="tab-label">Me</label>
+    <label for="tab2" class="tab-label">Girlfriend</label>
+    <label for="tab3" class="tab-label">Family</label>
+  </div>
 
-<div class="category-section">
-<h2 class="category-title">Girlfriend</h2>
-<div class="gallery-grid">
-    <a href="#img5" class="image-link"><img src="images/girlfriend1.jpg" class="box3" alt="Beautiful moment with my girlfriend" title="Beautiful moment with my girlfriend"></a>
-</div>
-</div>
+  <div class="tab-contents">
 
-<div class="category-section">
-<h2 class="category-title">Hobby</h2>
-<div class="gallery-grid">
-    <a href="#img6" class="image-link"><img src="images/hobby1.jpg" class="box1" alt="Enjoying my favorite hobby" title="Enjoying my favorite hobby"></a>
-    <a href="#img7" class="image-link"><img src="images/hobby2.jpg" class="box2" alt="Pursuing my passion and hobbies" title="Pursuing my passion and hobbies"></a>
-</div>
-</div>
+    <div class="tab-content content1">
+      <p class="category-description">Photos of me.</p>
+      <div class="gallery-grid">
+        <a href="images/me1.jpg"  target="_blank" class="image-link"><img src="images/me1.jpg"  class="border"  alt="fitcheck at hongkong" title="fitcheck at hongkong"></a>
+        <a href="images/me2.jpg"  target="_blank" class="image-link"><img src="images/me2.jpg"  class="border2" alt="day1 fit in hongkong" title="day1 fit in hongkong"></a>
+        <a href="images/me3.jpg"  target="_blank" class="image-link"><img src="images/me3.jpg"  class="box1"    alt="candid photo of me at beach" title="candid photo of me at beach"></a>
+        <a href="images/me4.jpg"  target="_blank" class="image-link"><img src="images/me4.jpg"  class="box2"    alt="side view in enchanted kingdom" title="side view in enchanted kingdom"></a>
+        <a href="images/me5.jpg"  target="_blank" class="image-link"><img src="images/me5.jpg"  class="box3"    alt="senior high intrams" title="senior high intrams"></a>
+        <a href="images/me6.jpg"  target="_blank" class="image-link"><img src="images/me6.jpg"  class="box4"    alt="a selfie of me" title="a selfie of me"></a>
+        <a href="images/me7.jpg"  target="_blank" class="image-link"><img src="images/me7.jpg"  class="box5"    alt="disneyland hongkong" title="disneyland hongkong"></a>
+        <a href="images/me8.jpg"  target="_blank" class="image-link"><img src="images/me8.jpg"  class="border"  alt="me playing basketball" title="me playing basketball"></a>
+        <a href="images/me9.jpg"  target="_blank" class="image-link"><img src="images/me9.jpg"  class="border2" alt="at cultural centre" title="at cultural centre"></a>
+        <a href="images/me10.jpg" target="_blank" class="image-link"><img src="images/me10.jpg" class="box1"    alt="a mirror picture of me" title="a mirror picture of me"></a>
+      </div>
+    </div>
 
-<div class="category-section">
-<h2 class="category-title">Dog</h2>
-<div class="gallery-grid">
-    <a href="#img8" class="image-link"><img src="images/dog1.jpg" class="box3" alt="My beloved dog" title="My beloved dog"></a>
-</div>
-</div>
+    <div class="tab-content content2">
+      <p class="category-description">Special moments with my girlfriend.</p>
+      <div class="gallery-grid">
+        <a href="images/girlfriend1.jpg"  target="_blank" class="image-link"><img src="images/girlfriend1.jpg"  class="border"  alt="my birthday celebration with my girlfriend" title="my birthday celebration with my girlfriend"></a>
+        <a href="images/girlfriend2.jpg"  target="_blank" class="image-link"><img src="images/girlfriend2.jpg"  class="border2" alt="our valentines day photobooth" title="our valentines day photobooth"></a>
+        <a href="images/girlfriend3.jpg"  target="_blank" class="image-link"><img src="images/girlfriend3.jpg"  class="box1"    alt="my girlfriend wearing my jersey" title="my girlfriend wearing my jersey"></a>
+        <a href="images/girlfriend4.jpg"  target="_blank" class="image-link"><img src="images/girlfriend4.jpg"  class="box2"    alt="playing billiard with my girlfriend" title="playing billiard with my girlfriend"></a>
+        <a href="images/girlfriend5.jpg"  target="_blank" class="image-link"><img src="images/girlfriend5.jpg"  class="box3"    alt="goofy picture of us" title="goofy picture of us"></a>
+        <a href="images/girlfriend6.jpg"  target="_blank" class="image-link"><img src="images/girlfriend6.jpg"  class="box4"    alt="our selfie" title="our selfie"></a>
+        <a href="images/girlfriend7.jpg"  target="_blank" class="image-link"><img src="images/girlfriend7.jpg"  class="box5"    alt="movie date with my girlfriend" title="movie date with my girlfriend"></a>
+        <a href="images/girlfriend8.jpg"  target="_blank" class="image-link"><img src="images/girlfriend8.jpg"  class="border"  alt="skating date" title="skating date"></a>
+        <a href="images/girlfriend9.jpg"  target="_blank" class="image-link"><img src="images/girlfriend9.jpg"  class="border2" alt="my girlfriend when she got what she wants" title="my girlfriend when she got what she wants"></a>
+        <a href="images/girlfriend10.jpg" target="_blank" class="image-link"><img src="images/girlfriend10.jpg" class="box1"    alt="our mirror picture in nueva ecija" title="our mirror picture in nueva ecija"></a>
+      </div>
+    </div>
 
-<div class="bottom-nav" style="text-align:center; margin-top:40px;">
+    <div class="tab-content content3">
+      <p class="category-description">Precious moments with my family.</p>
+      <div class="gallery-grid">
+        <a href="images/family1.jpg"  target="_blank" class="image-link"><img src="images/family1.jpg"  class="border"  alt="family picture at cultural centre, hongkong" title="family picture at cultural centre, hongkong"></a>
+        <a href="images/family2.jpg"  target="_blank" class="image-link"><img src="images/family2.jpg"  class="border2" alt="family picture at hongkong disneyland" title="family picture at hongkong disneyland"></a>
+        <a href="images/family3.jpg"  target="_blank" class="image-link"><img src="images/family3.jpg"  class="box1"    alt="celebrating new year 2026" title="celebrating new year 2026"></a>
+        <a href="images/family4.jpg"  target="_blank" class="image-link"><img src="images/family4.jpg"  class="box2"    alt="me, my brother, and our pretty mother" title="me, my brother, and our pretty mother"></a>
+        <a href="images/family5.jpg"  target="_blank" class="image-link"><img src="images/family5.jpg"  class="box3"    alt="eating lunch at hongkong disneyland" title="eating lunch at hongkong disneyland"></a>
+        <a href="images/family6.jpg"  target="_blank" class="image-link"><img src="images/family6.jpg"  class="box4"    alt="christmas 2024" title="christmas 2024"></a>
+        <a href="images/family7.jpg"  target="_blank" class="image-link"><img src="images/family7.jpg"  class="box5"    alt="me and my siblings" title="me and my siblings"></a>
+        <a href="images/family8.jpg"  target="_blank" class="image-link"><img src="images/family8.jpg"  class="border"  alt="family dinner of my birthday 2024" title="family dinner of my birthday 2024"></a>
+        <a href="images/family9.jpg"  target="_blank" class="image-link"><img src="images/family9.jpg"  class="border2" alt="my ate's first layover to manila" title="my ate's first layover to manila"></a>
+        <a href="images/family10.jpg" target="_blank" class="image-link"><img src="images/family10.jpg" class="box1"    alt="when my ate got accepted in doha, qatar" title="when my ate got accepted in doha, qatar"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:50px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
     <a href="#top" class="nav-btn btn-white">↑ Go to Top</a>
-    <a href="index.html" class="nav-btn">← Landing Page</a>
-</div>
-
-<div id="img1" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/family1.jpg" alt="Special moment with my family"></div>
-<div id="img2" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/family2.jpg" alt="Precious family time together"></div>
-<div id="img3" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/friends1.jpg" alt="Fun times with friends"></div>
-<div id="img4" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/friends2.jpg" alt="Great memories with my friends"></div>
-<div id="img5" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/girlfriend1.jpg" alt="Beautiful moment with my girlfriend"></div>
-<div id="img6" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/hobby1.jpg" alt="Enjoying my favorite hobby"></div>
-<div id="img7" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/hobby2.jpg" alt="Pursuing my passion and hobbies"></div>
-<div id="img8" class="overlay"><a href="#" class="close-btn">&times;</a><img src="images/dog1.jpg" alt="My beloved dog"></div>
+    <a href="index.html" class="nav-btn">Landing Page</a>
+  </div>
 
 </div>
 </body>
 </html>
-
