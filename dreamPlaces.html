@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="HAMOY, KURT TOBEY">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Places to Visit - Kurt Tobey Hamoy</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+    *:focus { outline: none; box-shadow: none; }
+    *:active { outline: none; box-shadow: none; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Tahoma, Arial, sans-serif; background-color: #e6f2ff; color: #1b263b; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+    /* NAV */
+    .top-nav { text-align: center; margin-bottom: 30px; }
+    .bottom-nav { text-align: center; margin-top: 50px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .nav-btn { background-color: #005f73; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; text-align: center; transition: background-color 0.3s ease, transform 0.3s ease; outline: none; -webkit-tap-highlight-color: transparent; }
+    .nav-btn:focus { outline: none; }
+    .nav-btn:active { outline: none; }
+    .nav-btn:hover { background-color: #007a8a; transform: translateY(-2px); }
+    .nav-current { background-color: #0a9396; color: white; padding: 12px 20px; border-radius: 5px; display: inline-block; margin: 5px; font-family: Tahoma, Arial, sans-serif; font-size: 13px; font-weight: bold; cursor: default; outline: none; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+    .btn-white { background-color: white; color: #005f73; border: 2px solid #005f73; }
+    .btn-white:hover { background-color: #f0f0f0; }
+
+    h1 { text-align: center; font-family: Georgia, serif; letter-spacing: 2px; color: #0a9396; text-transform: uppercase; font-size: 42px; margin-bottom: 15px; }
+    .subtitle { text-align: center; font-size: 16px; color: #415a77; margin-bottom: 10px; }
+    .instruction { text-align: center; font-size: 14px; color: #005f73; font-style: italic; margin-bottom: 30px; }
+
+    /* ── COLLAGE WRAPPER ── */
+    .collage-wrapper {
+      position: relative;
+      width: 900px;
+      height: 550px;
+      margin: 0 auto 40px;
+      background: #1b263b;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Each place */
+    .place {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-family: Georgia, serif;
+      font-weight: bold;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+    .place:hover { filter: brightness(1.25); z-index: 10; }
+
+    .place-label {
+      background: rgba(0,0,0,0.45);
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      pointer-events: none;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+    .place-label small {
+      display: block;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    /* ── PHOTO BACKGROUNDS ── */
+    .place-doha  { background-image: url('images/doha-bg.jpg');  background-color: #c9a84c; background-size: cover; background-position: center; }
+    .place-ny    { background-image: url('images/ny-bg.jpg');    background-color: #4a6fa5; background-size: cover; background-position: center; }
+    .place-japan { background-image: url('images/japan-bg.jpg'); background-color: #c9184a; background-size: cover; background-position: center; }
+    .place-korea { background-image: url('images/korea-bg.jpg'); background-color: #4361ee; background-size: cover; background-position: center; }
+    .place-bali  { background-image: url('images/bali-bg.jpg');  background-color: #2d6a4f; background-size: cover; background-position: center; }
+
+    /* 1. CIRCLE — Doha (top-left) */
+    .place-doha {
+      width: 190px; height: 190px;
+      border-radius: 50%;
+      left: 55px; top: 45px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+    }
+
+    /* 2. SQUARE — New York (top-right) */
+    .place-ny {
+      width: 210px; height: 210px;
+      border-radius: 8px;
+      right: 55px; top: 35px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+    }
+
+    /* 3. POLYGON Triangle — Japan (bottom-left) */
+    .place-japan {
+      width: 220px; height: 200px;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      left: 25px; bottom: 25px;
+    }
+
+    /* 4. POLYGON Pentagon — Korea (center) */
+    .place-korea {
+      width: 210px; height: 210px;
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .place-korea:hover { transform: translate(-50%, -50%) scale(1.04); }
+
+    /* 5. POLYGON Hexagon — Bali (bottom-right) */
+    .place-bali {
+      width: 210px; height: 190px;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      right: 25px; bottom: 25px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media screen and (max-width: 960px) {
+      .collage-wrapper { width: 100%; height: 480px; }
+      .place-doha  { left: 3%; }
+      .place-ny    { right: 3%; }
+      .place-japan { left: 1%; }
+      .place-bali  { right: 1%; }
+    }
+
+    @media screen and (max-width: 700px) {
+      h1 { font-size: 28px; }
+      .nav-btn, .nav-current { display: block; width: 100%; margin: 4px 0; }
+      .bottom-nav { flex-direction: column; align-items: center; }
+
+      .collage-wrapper {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+      .place {
+        position: static !important;
+        transform: none !important;
+        width: 150px !important;
+        height: 150px !important;
+      }
+      .place-korea:hover { transform: scale(1.04) !important; }
+      .place-bali { height: 136px !important; }
+      .place-japan { height: 140px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div class="container">
+
+    <div class="top-nav">
+      <a href="index.html" class="nav-btn">Landing Page</a>
+      <a href="biography.html" class="nav-btn">Biography</a>
+      <a href="blog1.html" class="nav-btn">Blog 1</a>
+      <a href="blog2.html" class="nav-btn">Blog 2</a>
+      <a href="blog3.html" class="nav-btn">Blog 3</a>
+      <a href="photoGallery.html" class="nav-btn">Photo Gallery</a>
+      <a href="mybeats.html" class="nav-btn">My Beats</a>
+      <a href="filmMovies.html" class="nav-btn">My Film Movies</a>
+      <a href="filmTVShows.html" class="nav-btn">My Film TV Shows</a>
+      <span class="nav-current">Dream Places</span>
+      <a href="bucketList.html" class="nav-btn">Bucket List</a>
+    </div>
+
+    <h1>Dream Places to Visit</h1>
+    <p class="subtitle">Five destinations I hope to experience someday</p>
+    <p class="instruction">Click on any shape to explore why I want to visit!</p>
+
+    <!-- CSS Shape Collage -->
+    <div class="collage-wrapper">
+
+      <!-- 1. CIRCLE — Doha -->
+      <a href="doha.html" target="_blank" class="place place-doha" title="Doha, Qatar">
+        <div class="place-label">Doha<small>Qatar</small></div>
+      </a>
+
+      <!-- 2. SQUARE — New York -->
+      <a href="newyork.html" target="_blank" class="place place-ny" title="New York, USA">
+        <div class="place-label">New York<small>USA</small></div>
+      </a>
+
+      <!-- 3. POLYGON (Triangle) — Japan -->
+      <a href="japan.html" target="_blank" class="place place-japan" title="Japan">
+        <div class="place-label" style="margin-top: 70px;">Japan<small>Cherry Blossoms</small></div>
+      </a>
+
+      <!-- 4. POLYGON (Pentagon) — Korea -->
+      <a href="korea.html" target="_blank" class="place place-korea" title="Korea">
+        <div class="place-label">Korea<small>K-Drama Locations</small></div>
+      </a>
+
+      <!-- 5. POLYGON (Hexagon) — Bali -->
+      <a href="bali.html" target="_blank" class="place place-bali" title="Bali, Indonesia">
+        <div class="place-label">Bali<small>Indonesia</small></div>
+      </a>
+
+    </div>
+
+    <div class="bottom-nav">
+      <a href="#top" class="nav-btn btn-white">↑ Go to Top</a>
+      <a href="index.html" class="nav-btn">Landing Page</a>
+    </div>
+
+  </div>
+</body>
+</html>
